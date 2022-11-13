@@ -13,6 +13,7 @@ public class EASType {
 
     int volume;
     int pitch;
+    int soundLength;
 
     public EASType(
             String name,
@@ -21,7 +22,8 @@ public class EASType {
             String shortMessage,
             List<String> longMessages,
             int volume,
-            int pitch
+            int pitch,
+            int soundLength
     ) {
         this.name = name;
         this.permission = permission;
@@ -30,6 +32,7 @@ public class EASType {
         this.longMessages = longMessages;
         this.volume = volume;
         this.pitch = pitch;
+        this.soundLength = soundLength;
     }
 
     public String getName() {
@@ -58,5 +61,9 @@ public class EASType {
 
     public int getPitch() {
         return pitch;
+    }
+
+    public int getSoundLength() {
+        return soundLength;
     }
 }

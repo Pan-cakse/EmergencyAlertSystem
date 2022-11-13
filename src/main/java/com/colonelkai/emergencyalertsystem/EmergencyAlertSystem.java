@@ -19,12 +19,12 @@ public final class EmergencyAlertSystem extends JavaPlugin {
         // Plugin startup logic
         EmergencyAlertSystem.plugin = this;
         EmergencyAlertSystem.getPlugin().getLogger().info("Starting EAS...");
+        EmergencyAlertSystem.configManager = new ConfigManager();
+        Set<EASType> easTypeSet = EmergencyAlertSystem.configManager.getAllEASTypesFromConfig();
         PluginCommand command = this.getCommand("emergency-alert-system");
         assert command != null;
         command.setExecutor(Commands.COMMANDS);
         command.setTabCompleter(Commands.COMMANDS);
-        EmergencyAlertSystem.configManager = new ConfigManager();
-        Set<EASType> easTypeSet = EmergencyAlertSystem.configManager.getAllEASTypesFromConfig();
     }
 
     @Override

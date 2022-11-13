@@ -6,7 +6,6 @@ public class Commands {
 
     public static final BukkitCommandWrapper COMMANDS =
             new BukkitCommandWrapper(
-                    new CivilProtectionEASCommand(),
-                    new MissileEASCommand()
+                    new IssueCommand()
             );
 }

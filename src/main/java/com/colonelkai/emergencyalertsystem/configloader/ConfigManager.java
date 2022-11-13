@@ -16,6 +16,7 @@ import java.util.Set;
 public class ConfigManager {
 
     YamlConfiguration config;
+    Set<EASType> easTypeSet;
 
     public ConfigManager() {
         onEnable();
@@ -64,13 +65,20 @@ public class ConfigManager {
                     this.config.getString(k+".permission"),
                     this.config.getString(k+".sound"),
                     this.config.getString(k+".short-message"),
-                    (List<String>) this.config.getList(k+".long-message"), // mose help with this part :((
+                    this.config.getStringList(k+".long-message"),
                     this.config.getInt(k+".volume"),
-                    this.config.getInt(k+".pitch")
+                    this.config.getInt(k+".pitch"),
+                    this.config.getInt(k+".sound-length")
             ));
         });
 
+        this.easTypeSet = easTypeSet;
+
         return easTypeSet;
+    }
+
+    public Set<EASType> getAllEASTypesFromCache() {
+        return this.easTypeSet;
     }
 
 }

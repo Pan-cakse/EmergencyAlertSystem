@@ -1,0 +1,18 @@
+name: EmergencyAlertSystem
+version: '${project.version}'
+main: com.colonelkai.emergencyalertsystem.EmergencyAlertSystem
+api-version: 1.18
+authors: [ ColonelKai ]
+description: A plugin to provide Emergency Alert Systems.
+commands:
+  emergency-alert-system:
+    description: Issue an emergency alert.
+    permission: eas
+    permission-message: You cannot issue EAS warnings thy pheasant.
+    usage: /emergency-alert-system issue [EAS Type] [message]
+    aliases:
+      - eas
+permissions:
+  eas.issue:
+    default: OP
+    description: Issue an emergency alert.

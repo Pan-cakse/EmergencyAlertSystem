@@ -1,0 +1,34 @@
+# EAS Plugin
+# by ColonelKai
+
+# SAMPLE EAS; FOR EASIER WRITING
+
+# sample-eas:
+#   permission: eas.sample # permission to use this specific EAS warning.
+#   sound: 'minecraft:eas-sample' # the name of the sound on your texture-pack. You can test with /playsound in-game.
+#   long-message: # This will be sent in the chat when EAS is activated. The message will be sent after this.
+#     - 'NATIONAL EARLY WARNING SYSTEM'
+#     - 'SAMPLE THREAT IS APPROACHING THE NATION. PLEASE SEEK SHELTER.'
+#   short-message: 'SAMPLE THREAT.' # this will be shown in a player's hot-bar, followed by the message.
+#   volume: 10 # volume and pitch are the same as the ones on /playsound
+#   pitch: 1
+
+civil-protection:
+  permission: eas.civil-protection
+  sound: 'minecraft:eas1'
+  long-message:
+    - '------------ RNET ------------'
+    - 'The Royal Chancellery of the Internal Affairs have issued a Civil Protection Warning. Please seek shelter.'
+  short-message: 'Civil Protection Warning.'
+  volume: 10
+  pitch: 1
+
+missile-warning:
+  permission: eas.missile-warning
+  sound: 'minecraft:eas3'
+  long-message:
+    - '------------ RNET ------------'
+    - 'The Royal Chancellery of the Arms have issued a Missile Warning. Please seek shelter. Effected Areas:'
+  short-message: 'Missile Warning. Effected Areas:'
+  volume: 10
+  pitch: 1

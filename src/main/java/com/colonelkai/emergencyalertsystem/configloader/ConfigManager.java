@@ -1,12 +1,13 @@
 package com.colonelkai.emergencyalertsystem.configloader;
 
 import com.colonelkai.emergencyalertsystem.EmergencyAlertSystem;
-import com.colonelkai.emergencyalertsystem.eas_type.EASType;
+import com.colonelkai.emergencyalertsystem.eastype.EASType;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,18 +18,25 @@ public class ConfigManager {
     Collection<EASType> easTypeSet;
 
     public ConfigManager() {
-        onEnable();
+        this.onEnable();
     }
 
     private void onEnable() {
         File configFile = new File(EmergencyAlertSystem.getPlugin().getDataFolder(), "config.yml");
 
         if(!configFile.exists()) { // if config does not exist, thou shall create
-            configFile.getParentFile().mkdir();
+            if(!configFile.getParentFile().mkdir()) {
+                EmergencyAlertSystem.getPlugin().getLogger().warning("Failed to mkdir default config's parent directory.");
+                throw new RuntimeException("Failed to mkdir default config's parent directory.");
+            }
+
             InputStream defaultConfigInputStream = EmergencyAlertSystem.getPlugin().getResource("config.yml");
 
             try {
-                java.nio.file.Files.copy(
+                if (null == defaultConfigInputStream) {
+                    throw new AssertionError();
+                }
+                Files.copy(
                         defaultConfigInputStream,
                         configFile.toPath(),
                         StandardCopyOption.REPLACE_EXISTING);
@@ -50,12 +58,12 @@ public class ConfigManager {
         EmergencyAlertSystem.getPlugin().getLogger().info("Loaded Config.");
     }
 
-    public Collection<EASType> getAllEASTypesFromConfig() {
+    public void getAllEASTypesFromConfig() {
         // Set<EASType> easTypeSet = new HashSet<>();
 
         Set<String> keys = this.config.getKeys(false);
 
-        EmergencyAlertSystem.getPlugin().getLogger().info("Attempting to load: " + keys.toString());
+        EmergencyAlertSystem.getPlugin().getLogger().info("Attempting to load: " + keys);
 
         Collection<EASType> easTypeSet = keys.parallelStream().map(k -> new EASType(
                 k,
@@ -74,7 +82,6 @@ public class ConfigManager {
 
         this.easTypeSet = easTypeSet;
 
-        return easTypeSet;
     }
 
     public Collection<EASType> getAllEASTypesFromCache() {

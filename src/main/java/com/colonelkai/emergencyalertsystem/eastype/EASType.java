@@ -1,6 +1,5 @@
-package com.colonelkai.emergencyalertsystem.eas_type;
+package com.colonelkai.emergencyalertsystem.eastype;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class EASType {
@@ -9,7 +8,7 @@ public class EASType {
     String sound;
     String shortMessage;
 
-    List<String> longMessages = new ArrayList<String>();
+    List<String> longMessages;
 
     int volume;
     int pitch;

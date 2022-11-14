@@ -56,8 +56,6 @@ public class MissileEASCommand implements ArgumentCommand {
                 string;
         EmergencyAlertSystem.getPlugin().getServer().broadcastMessage(broadcastMessage);
 
-        EmergencyAlertSystem.getPlugin().getServer().broadcastMessage(broadcastMessage);
-
         // SHORT MESSAGE
 
         String broadcastMessageShort =

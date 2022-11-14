@@ -1,7 +1,7 @@
 package com.colonelkai.emergencyalertsystem.commands;
 
 import com.colonelkai.emergencyalertsystem.EmergencyAlertSystem;
-import com.colonelkai.emergencyalertsystem.eas_type.EASType;
+import com.colonelkai.emergencyalertsystem.eastype.EASType;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -19,15 +19,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class IssueCommand implements ArgumentCommand {
-    private final ExactArgument ISSUE_ARGUMENT = new ExactArgument("issue");
+    private static final ExactArgument ISSUE_ARGUMENT = new ExactArgument("issue");
 
-    private final AnyArgument<EASType> EAS_TYPE_ARGUMENT = new AnyArgument<>(
+    private static final AnyArgument<EASType> EAS_TYPE_ARGUMENT = new AnyArgument<>(
             "argument",
             EASType::getName,
             (c, s) -> c.parallelStream().filter(t -> t.getName().equalsIgnoreCase(s)).findFirst().orElse(null),
             (context, argumentContext) -> EmergencyAlertSystem.getConfigManager().getAllEASTypesFromCache());
 
-    private final RemainingArgument<String> REMAINING_ARGUMENT = new RemainingArgument<>(new StringArgument("message"));
+    private static final RemainingArgument<String> REMAINING_ARGUMENT = new RemainingArgument<>(new StringArgument("message"));
     @Override
     public @NotNull List<CommandArgument<?>> getArguments() {
         return Arrays.asList(
@@ -51,47 +51,47 @@ public class IssueCommand implements ArgumentCommand {
     public boolean run(CommandContext commandContext, String... args) {
         EASType easType = commandContext.getArgument(this, EAS_TYPE_ARGUMENT);
         List<String> list = commandContext.getArgument(this, REMAINING_ARGUMENT);
-        String string = String.join(" ", list);
+        String message = String.join(" ", list);
 
-        // TODO LONG MESSAGE
+        // CHECK PERMISSION
+        if(!commandContext.getSource().hasPermission(easType.getPermission())) {
+            commandContext.getSource().sendMessage(ChatColor.RED + "You lack the following permission to issue the EAS warning: ");
+            return true;
+        }
+
         String broadcastMessage =
                 ChatColor.RED +
                 String.join("\n", easType.getLongMessages())
-                + "\n" + ChatColor.ITALIC +
-                string
-                ;
+                + '\n' + ChatColor.ITALIC +
+                message;
+
+        EmergencyAlertSystem.getPlugin().getServer().broadcastMessage(broadcastMessage);
 
         // SHORT MESSAGE
         String broadcastMessageShort =
                 ChatColor.RED +
                         easType.getShortMessage()
-                        + ChatColor.ITALIC + " " +
-                        string;
+                        + ChatColor.ITALIC + ' ' +
+                        message;
 
         // SOUNDS TO PLAYERS
         EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
                 .parallelStream()
-                .forEach(p -> {
-                    p.playSound(p.getLocation(), easType.getSound(), easType.getVolume(), easType.getPitch());
-                });
+                .forEach(p -> p.playSound(p.getLocation(), easType.getSound(), easType.getVolume(), easType.getPitch()));
 
-        // HOTBAR MESSAGE
-        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(EmergencyAlertSystem.getPlugin(), new Runnable(){
-            public void run(){
-                EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
-                        .parallelStream()
-                        .forEach(p -> {
-                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort));
-                        });
-            }
-        }, 0, 20);
+        // HOT-BAR MESSAGE
+        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(EmergencyAlertSystem.getPlugin(),
+                () ->
+                            EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
+                            .parallelStream()
+                            .forEach(p -> p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort))),
 
-        EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(EmergencyAlertSystem.getPlugin(), new Runnable() {
-            @Override
-            public void run() {
-                EmergencyAlertSystem.getPlugin().getServer().getScheduler().cancelTask(task2);
-            }
-        }, easType.getSoundLength());
+                0, 20);
+
+        EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(
+                EmergencyAlertSystem.getPlugin(),
+                () -> EmergencyAlertSystem.getPlugin().getServer().getScheduler().cancelTask(task2),
+                (easType.getSoundLength()* 20L));
 
         return true;
     }

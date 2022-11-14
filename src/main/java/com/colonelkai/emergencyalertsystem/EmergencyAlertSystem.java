@@ -18,15 +18,10 @@ public final class EmergencyAlertSystem extends JavaPlugin {
         EmergencyAlertSystem.configManager.getAllEASTypesFromConfig();
         PluginCommand command = this.getCommand("emergency-alert-system");
         if (null == command) {
-            throw new AssertionError();
+            throw new RuntimeException("'emergency-alert-system' command not found in plugin.yml. Has this been modified?");
         }
         command.setExecutor(Commands.COMMANDS);
         command.setTabCompleter(Commands.COMMANDS);
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
     }
 
     public static JavaPlugin getPlugin() {

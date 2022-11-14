@@ -54,7 +54,7 @@ public class ConfigManager {
 
         }
 
-        this.setConfig(YamlConfiguration.loadConfiguration(configFile));
+        this.config = (YamlConfiguration.loadConfiguration(configFile));
         EmergencyAlertSystem.getPlugin().getLogger().info("Loaded Config.");
     }
 

@@ -17,16 +17,15 @@ import org.mose.command.context.CommandContext;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public class IssueCommand implements ArgumentCommand {
     private final ExactArgument ISSUE_ARGUMENT = new ExactArgument("issue");
 
-    private final AnyArgument<EASType> EAS_TYPE_ARGUMENT = new AnyArgument<EASType>(
+    private final AnyArgument<EASType> EAS_TYPE_ARGUMENT = new AnyArgument<>(
             "argument",
             EASType::getName,
-            (c, s) -> c.parallelStream().filter(t -> t.getName() == s).findFirst().get(),
-            EmergencyAlertSystem.getConfigManager().getAllEASTypesFromCache());
+            (c, s) -> c.parallelStream().filter(t -> t.getName().equalsIgnoreCase(s)).findFirst().get(),
+            (context, argumentContext) -> EmergencyAlertSystem.getConfigManager().getAllEASTypesFromCache());
 
     private final RemainingArgument<String> REMAINING_ARGUMENT = new RemainingArgument<>(new StringArgument("message"));
     @Override

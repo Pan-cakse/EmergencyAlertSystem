@@ -53,13 +53,13 @@ public class IssueCommand implements ArgumentCommand {
         List<String> list = commandContext.getArgument(this, REMAINING_ARGUMENT);
         String string = String.join(" ", list);
 
-        // TODO LONG MESSAGE
         String broadcastMessage =
                 ChatColor.RED +
                 String.join("\n", easType.getLongMessages())
                 + "\n" + ChatColor.ITALIC +
-                string
-                ;
+                string;
+
+        EmergencyAlertSystem.getPlugin().getServer().broadcastMessage(broadcastMessage);
 
         // SHORT MESSAGE
         String broadcastMessageShort =
@@ -76,22 +76,18 @@ public class IssueCommand implements ArgumentCommand {
                 });
 
         // HOTBAR MESSAGE
-        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(EmergencyAlertSystem.getPlugin(), new Runnable(){
-            public void run(){
-                EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
-                        .parallelStream()
-                        .forEach(p -> {
-                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort));
-                        });
-            }
-        }, 0, 20);
+        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(EmergencyAlertSystem.getPlugin(),
+                () ->
+                            EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
+                            .parallelStream()
+                            .forEach(p -> p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort))),
 
-        EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(EmergencyAlertSystem.getPlugin(), new Runnable() {
-            @Override
-            public void run() {
-                EmergencyAlertSystem.getPlugin().getServer().getScheduler().cancelTask(task2);
-            }
-        }, easType.getSoundLength());
+                0, 20);
+
+        EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(
+                EmergencyAlertSystem.getPlugin(),
+                () -> EmergencyAlertSystem.getPlugin().getServer().getScheduler().cancelTask(task2),
+                (easType.getSoundLength()* 20L));
 
         return true;
     }

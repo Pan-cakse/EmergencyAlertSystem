@@ -25,6 +25,17 @@ civil-protection:
   volume: 10
   pitch: 1
 
+nuclear-threat-warning:
+  permission: eas.nuclear-threat-warning
+  sound: 'minecraft:eas2'
+  sound-length: 30
+  long-message:
+    - '------------ RNET ------------'
+    - 'The Royal Chancellery of the Internal Affairs have issued a Nuclear Threat Warning. Please seek shelter. Effected Areas:'
+  short-message: 'Nuclear Threat Warning. Effected Areas:'
+  volume: 10
+  pitch: 1
+
 missile-warning:
   permission: eas.missile-warning
   sound: 'minecraft:eas3'

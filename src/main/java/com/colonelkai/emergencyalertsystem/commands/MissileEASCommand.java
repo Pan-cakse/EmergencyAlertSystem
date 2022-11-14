@@ -54,6 +54,7 @@ public class MissileEASCommand implements ArgumentCommand {
                 "The Royal Chancellery of the Arms have issued a Missile Warning. Please seek shelter. Effected Areas:"
                 + "\n" + ChatColor.ITALIC +
                 string;
+        EmergencyAlertSystem.getPlugin().getServer().broadcastMessage(broadcastMessage);
 
         EmergencyAlertSystem.getPlugin().getServer().broadcastMessage(broadcastMessage);
 
@@ -74,15 +75,13 @@ public class MissileEASCommand implements ArgumentCommand {
                 });
 
 // 560
-        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(EmergencyAlertSystem.getPlugin(), new Runnable(){
-            public void run(){
-                EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
-                        .parallelStream()
-                        .forEach(p -> {
-                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort));
-                        });
-            }
-        }, 0, 20);
+        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(
+                EmergencyAlertSystem.getPlugin(),
+                () ->
+                                EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
+                                .parallelStream()
+                                .forEach(p -> p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort))),
+                0, 20);
 
         EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(EmergencyAlertSystem.getPlugin(), new Runnable() {
             @Override

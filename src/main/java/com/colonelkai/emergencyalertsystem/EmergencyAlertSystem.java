@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Set;
 
 public final class EmergencyAlertSystem extends JavaPlugin {
@@ -20,7 +21,7 @@ public final class EmergencyAlertSystem extends JavaPlugin {
         EmergencyAlertSystem.plugin = this;
         EmergencyAlertSystem.getPlugin().getLogger().info("Starting EAS...");
         EmergencyAlertSystem.configManager = new ConfigManager();
-        Set<EASType> easTypeSet = EmergencyAlertSystem.configManager.getAllEASTypesFromConfig();
+        Collection<EASType> easTypeSet = EmergencyAlertSystem.configManager.getAllEASTypesFromConfig();
         PluginCommand command = this.getCommand("emergency-alert-system");
         assert command != null;
         command.setExecutor(Commands.COMMANDS);

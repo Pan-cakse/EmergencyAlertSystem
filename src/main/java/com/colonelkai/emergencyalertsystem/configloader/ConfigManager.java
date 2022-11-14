@@ -63,7 +63,7 @@ public class ConfigManager {
 
         EmergencyAlertSystem.getPlugin().getLogger().info("Attempting to load: " + keys);
 
-        this.setEasTypeSet(keys.parallelStream().map(k -> new EASType(
+        this.easTypeSet = (keys.parallelStream().map(k -> new EASType(
                 k,
                 this.getConfig().getString(k+".permission"),
                 this.getConfig().getString(k+".sound"),
@@ -88,15 +88,7 @@ public class ConfigManager {
         return config;
     }
 
-    public void setConfig(YamlConfiguration config) {
-        this.config = config;
-    }
-
     public Collection<EASType> getEasTypeSet() {
         return easTypeSet;
-    }
-
-    public void setEasTypeSet(Collection<EASType> easTypeSet) {
-        this.easTypeSet = easTypeSet;
     }
 }

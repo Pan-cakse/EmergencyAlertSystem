@@ -8,15 +8,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ConfigManager {
 
     YamlConfiguration config;
-    Set<EASType> easTypeSet;
+    Collection<EASType> easTypeSet;
 
     public ConfigManager() {
         onEnable();
@@ -52,32 +50,34 @@ public class ConfigManager {
         EmergencyAlertSystem.getPlugin().getLogger().info("Loaded Config.");
     }
 
-    public Set<EASType> getAllEASTypesFromConfig() {
-        Set<EASType> easTypeSet = new HashSet<>();
+    public Collection<EASType> getAllEASTypesFromConfig() {
+        // Set<EASType> easTypeSet = new HashSet<>();
 
         Set<String> keys = this.config.getKeys(false);
 
-        EmergencyAlertSystem.getPlugin().getLogger().info("DEBUG: " + keys.toString());
+        EmergencyAlertSystem.getPlugin().getLogger().info("Attempting to load: " + keys.toString());
 
-        keys.parallelStream().forEach(k -> {
-            easTypeSet.add(new EASType(
-                    k,
-                    this.config.getString(k+".permission"),
-                    this.config.getString(k+".sound"),
-                    this.config.getString(k+".short-message"),
-                    this.config.getStringList(k+".long-message"),
-                    this.config.getInt(k+".volume"),
-                    this.config.getInt(k+".pitch"),
-                    this.config.getInt(k+".sound-length")
-            ));
-        });
+        Collection<EASType> easTypeSet = keys.parallelStream().map(k -> new EASType(
+                k,
+                this.config.getString(k+".permission"),
+                this.config.getString(k+".sound"),
+                this.config.getString(k+".short-message"),
+                this.config.getStringList(k+".long-message"),
+                this.config.getInt(k+".volume"),
+                this.config.getInt(k+".pitch"),
+                this.config.getInt(k+".sound-length")
+        )).collect(Collectors.toSet());
+
+        EmergencyAlertSystem.getPlugin().getLogger().info("Loaded: " +
+                        easTypeSet.parallelStream().map(EASType::getName).toList()
+                );
 
         this.easTypeSet = easTypeSet;
 
         return easTypeSet;
     }
 
-    public Set<EASType> getAllEASTypesFromCache() {
+    public Collection<EASType> getAllEASTypesFromCache() {
         return this.easTypeSet;
     }
 

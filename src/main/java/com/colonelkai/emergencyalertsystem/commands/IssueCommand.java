@@ -24,7 +24,7 @@ public class IssueCommand implements ArgumentCommand {
     private final AnyArgument<EASType> EAS_TYPE_ARGUMENT = new AnyArgument<>(
             "argument",
             EASType::getName,
-            (c, s) -> c.parallelStream().filter(t -> t.getName().equalsIgnoreCase(s)).findFirst().get(),
+            (c, s) -> c.parallelStream().filter(t -> t.getName().equalsIgnoreCase(s)).findFirst().orElse(null),
             (context, argumentContext) -> EmergencyAlertSystem.getConfigManager().getAllEASTypesFromCache());
 
     private final RemainingArgument<String> REMAINING_ARGUMENT = new RemainingArgument<>(new StringArgument("message"));
@@ -65,7 +65,7 @@ public class IssueCommand implements ArgumentCommand {
         String broadcastMessageShort =
                 ChatColor.RED +
                         easType.getShortMessage()
-                        + ChatColor.ITALIC +
+                        + ChatColor.ITALIC + " " +
                         string;
 
         // SOUNDS TO PLAYERS

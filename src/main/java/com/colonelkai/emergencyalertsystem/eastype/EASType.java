@@ -3,35 +3,33 @@ package com.colonelkai.emergencyalertsystem.eastype;
 import java.util.List;
 
 public class EASType {
-    private String name;
-    private String permission;
-    private String sound;
-    private String shortMessage;
+    private final String name;
+    private final String permission;
+    private final String sound;
+    private final String shortMessage;
 
-    private List<String> longMessages;
+    private final List<String> longMessages;
 
-    private int volume;
-    private int pitch;
-    private int soundLength;
+    private final int volume;
+    private final int pitch;
+    private final int soundLength;
 
-    public EASType(
-            String name,
-            String permission,
-            String sound,
-            String shortMessage,
-            List<String> longMessages,
-            int volume,
-            int pitch,
-            int soundLength
-    ) {
-        this.setName(name);
-        this.setPermission(permission);
-        this.setSound(sound);
-        this.setShortMessage(shortMessage);
-        this.setLongMessages(longMessages);
-        this.setVolume(volume);
-        this.setPitch(pitch);
-        this.setSoundLength(soundLength);
+    public EASType(String name,
+                   String permission,
+                   String sound,
+                   String shortMessage,
+                   List<String> longMessages,
+                   int volume,
+                   int pitch,
+                   int soundLength) {
+        this.name = name;
+        this.permission = permission;
+        this.sound = sound;
+        this.shortMessage = shortMessage;
+        this.longMessages = longMessages;
+        this.volume = volume;
+        this.pitch = pitch;
+        this.soundLength = soundLength;
     }
 
     public String getName() {
@@ -66,35 +64,4 @@ public class EASType {
         return soundLength;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPermission(String permission) {
-        this.permission = permission;
-    }
-
-    public void setSound(String sound) {
-        this.sound = sound;
-    }
-
-    public void setShortMessage(String shortMessage) {
-        this.shortMessage = shortMessage;
-    }
-
-    public void setLongMessages(List<String> longMessages) {
-        this.longMessages = longMessages;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public void setPitch(int pitch) {
-        this.pitch = pitch;
-    }
-
-    public void setSoundLength(int soundLength) {
-        this.soundLength = soundLength;
-    }
 }

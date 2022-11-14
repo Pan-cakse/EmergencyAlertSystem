@@ -10,5 +10,6 @@ public final class Commands {
             );
 
     private Commands() {
+        throw new RuntimeException("Called constructor for Utility Class, COMMANDS.JAVA");
     }
 }

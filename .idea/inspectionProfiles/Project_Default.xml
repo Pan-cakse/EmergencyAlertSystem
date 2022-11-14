@@ -513,7 +513,7 @@
     <inspection_tool class="BooleanExpressionMayBeConditional" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="BooleanLiteralArgument" enabled="true" level="INFO" enabled_by_default="true" />
     <inspection_tool class="BooleanMethodIsAlwaysInverted" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="BooleanMethodNameMustStartWithQuestion" enabled="false" level="WARNING" enabled_by_default="false">
+    <inspection_tool class="BooleanMethodNameMustStartWithQuestion" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreBooleanMethods" value="false" />
       <option name="ignoreInAnnotationInterface" value="true" />
       <option name="onlyWarnOnBaseMethods" value="true" />
@@ -621,7 +621,7 @@
     <inspection_tool class="ClassName" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="ClassNameDiffersFromFileName" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ClassNamePrefixedWithPackageName" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="ClassNameSameAsAncestorName" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ClassNameSameAsAncestorName" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ClassNestingDepth" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="m_limit" value="1" />
     </inspection_tool>
@@ -790,7 +790,7 @@
     <inspection_tool class="DirectUseOfResultType" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="DisjointPackage" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="DivideByZero" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="DollarSignInName" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="DollarSignInName" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="DoubleBraceInitialization" enabled="true" level="WEAK WARNING" enabled_by_default="true" editorAttributes="INFO_ATTRIBUTES" />
     <inspection_tool class="DoubleCheckedLocking" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreOnVolatileVariables" value="false" />
@@ -886,7 +886,7 @@
       <option name="ignoreGetMessage" value="false" />
       <option name="ignoreCantWrap" value="false" />
     </inspection_tool>
-    <inspection_tool class="ExceptionNameDoesntEndWithException" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ExceptionNameDoesntEndWithException" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ExceptionPackage" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ExcessiveLambdaUsage" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ExcessiveRangeCheck" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -927,7 +927,11 @@
     </inspection_tool>
     <inspection_tool class="FieldMayBeFinal" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="FieldMayBeStatic" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="FieldNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="FieldNamingConvention" enabled="false" level="WARNING" enabled_by_default="false">
+      <extension name="ConstantNamingConvention" enabled="true" />
+      <extension name="ConstantWithMutableFieldTypeNamingConvention" enabled="true" />
+      <extension name="EnumeratedConstantNamingConvention" enabled="true" />
+    </inspection_tool>
     <inspection_tool class="FieldNotUsedInToString" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="FileEqualsUsage" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="FillPermitsList" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="WARNING_ATTRIBUTES" />
@@ -1401,7 +1405,7 @@
     <inspection_tool class="LambdaCanBeMethodCall" enabled="false" level="INFORMATION" enabled_by_default="false" />
     <inspection_tool class="LambdaCanBeReplacedWithAnonymous" enabled="false" level="INFORMATION" enabled_by_default="false" />
     <inspection_tool class="LambdaParameterHidingMemberVariable" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="LambdaParameterNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="LambdaParameterNamingConvention" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LambdaParameterTypeCanBeSpecified" enabled="false" level="INFORMATION" enabled_by_default="false" />
     <inspection_tool class="LambdaUnfriendlyMethodOverload" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="LanguageDetectionInspection" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1553,12 +1557,13 @@
     <inspection_tool class="MissingPackageInfo" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="MissingRecentApi" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MissingSerialAnnotation" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="MissortedModifiers" enabled="true" level="WARNING" enabled_by_default="true">
+    <inspection_tool class="MissortedModifiers" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="m_requireAnnotationsFirst" value="true" />
+      <option name="typeUseWithType" value="true" />
     </inspection_tool>
     <inspection_tool class="MisspelledEquals" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="MisspelledHeader" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="MisspelledMethodName" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="MisspelledMethodName" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="MixinAnnotationTarget" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MixinInnerClass" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="MixinSuperClass" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -1617,7 +1622,7 @@
     <inspection_tool class="NewExpressionSideOnly" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="NewGroovyClassNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NewInstanceOfSingleton" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="NewMethodNamingConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="NewMethodNamingConvention" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NewObjectEquality" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NewStringBufferWithCharArgument" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NoButtonGroup" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1628,7 +1633,7 @@
     <inspection_tool class="NoTranslation" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="NonAsciiCharacters" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NonAtomicOperationOnVolatileField" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="NonBooleanMethodNameMayNotStartWithQuestion" enabled="false" level="WARNING" enabled_by_default="false">
+    <inspection_tool class="NonBooleanMethodNameMayNotStartWithQuestion" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="questionString" value="are,can,check,contains,could,endsWith,equals,has,is,matches,must,shall,should,startsWith,was,were,will,would" />
       <option name="ignoreBooleanMethods" value="false" />
       <option name="onlyWarnOnBaseMethods" value="true" />
@@ -1637,7 +1642,7 @@
       <option name="m_limit" value="30" />
     </inspection_tool>
     <inspection_tool class="NonDefaultConstructor" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="NonExceptionNameEndsWithException" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="NonExceptionNameEndsWithException" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NonExhaustiveWhenStatementMigration" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NonExtendableApiUsage" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NonFinalClone" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -1725,7 +1730,7 @@
     <inspection_tool class="OverloadedMethodsWithSameNumberOfParameters" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="ignoreInconvertibleTypes" value="true" />
     </inspection_tool>
-    <inspection_tool class="OverloadedVarargsMethod" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="OverloadedVarargsMethod" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="OverlyComplexArithmeticExpression" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="m_limit" value="6" />
     </inspection_tool>
@@ -1752,10 +1757,10 @@
     <inspection_tool class="PackageInMultipleModules" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PackageInfoWithoutPackage" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PackageName" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="PackageNamingConvention" enabled="false" level="WARNING" enabled_by_default="false">
+    <inspection_tool class="PackageNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="m_regex" value="[a-z]*" />
       <option name="m_minLength" value="3" />
-      <option name="m_maxLength" value="16" />
+      <option name="m_maxLength" value="25" />
     </inspection_tool>
     <inspection_tool class="PackageVisibleField" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PackageVisibleInnerClass" enabled="false" level="WARNING" enabled_by_default="false">
@@ -1776,14 +1781,14 @@
       <option name="m_ignoreForPropertySetters" value="false" />
       <option name="m_ignoreForAbstractMethods" value="false" />
     </inspection_tool>
-    <inspection_tool class="ParameterNameDiffersFromOverriddenParameter" enabled="false" level="WARNING" enabled_by_default="false">
-      <option name="m_ignoreSingleCharacterNames" value="false" />
-      <option name="m_ignoreOverridesOfLibraryMethods" value="false" />
+    <inspection_tool class="ParameterNameDiffersFromOverriddenParameter" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_ignoreSingleCharacterNames" value="true" />
+      <option name="m_ignoreOverridesOfLibraryMethods" value="true" />
     </inspection_tool>
-    <inspection_tool class="ParameterNamingConvention" enabled="false" level="WARNING" enabled_by_default="false">
+    <inspection_tool class="ParameterNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="m_regex" value="[a-z][A-Za-z\d]*" />
       <option name="m_minLength" value="1" />
-      <option name="m_maxLength" value="20" />
+      <option name="m_maxLength" value="100" />
     </inspection_tool>
     <inspection_tool class="ParameterTypePreventsOverriding" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ParameterizedParametersStaticCollection" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -1868,7 +1873,7 @@
     <inspection_tool class="PublicStaticArrayField" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PublicStaticCollectionField" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PublicStaticMixinMember" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="QuestionableName" enabled="false" level="WARNING" enabled_by_default="false">
+    <inspection_tool class="QuestionableName" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="nameString" value="aa,abc,bad,bar,bar2,baz,baz1,baz2,baz3,bb,blah,bogus,bool,cc,dd,defau1t,dummy,dummy2,ee,fa1se,ff,foo,foo1,foo2,foo3,foobar,four,fred,fred1,fred2,gg,hh,hello,hello1,hello2,hello3,ii,nu11,one,silly,silly2,string,two,that,then,three,whi1e,var" />
     </inspection_tool>
     <inspection_tool class="QuickFixGetFamilyNameViolation" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -2460,7 +2465,7 @@
     <inspection_tool class="UnusedSymbol" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnusedUnaryOperator" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UpdateTransitionLabel" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="UpperCaseFieldNameNotConstant" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="UpperCaseFieldNameNotConstant" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UseBulkOperation" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UseCompareMethod" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UseCouple" enabled="false" level="WARNING" enabled_by_default="false" />

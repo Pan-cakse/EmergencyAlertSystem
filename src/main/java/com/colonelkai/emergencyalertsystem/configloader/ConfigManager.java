@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 
 public class ConfigManager {
 
-    YamlConfiguration config;
-    Collection<EASType> easTypeSet;
+    private YamlConfiguration config;
+    private Collection<EASType> easTypeSet;
 
     public ConfigManager() {
         this.onEnable();
@@ -54,38 +54,53 @@ public class ConfigManager {
 
         }
 
-        this.config = YamlConfiguration.loadConfiguration(configFile);
+        this.setConfig(YamlConfiguration.loadConfiguration(configFile));
         EmergencyAlertSystem.getPlugin().getLogger().info("Loaded Config.");
     }
 
     public void getAllEASTypesFromConfig() {
         // Set<EASType> easTypeSet = new HashSet<>();
 
-        Set<String> keys = this.config.getKeys(false);
+        Set<String> keys = this.getConfig().getKeys(false);
 
         EmergencyAlertSystem.getPlugin().getLogger().info("Attempting to load: " + keys);
 
         Collection<EASType> easTypeSet = keys.parallelStream().map(k -> new EASType(
                 k,
-                this.config.getString(k+".permission"),
-                this.config.getString(k+".sound"),
-                this.config.getString(k+".short-message"),
-                this.config.getStringList(k+".long-message"),
-                this.config.getInt(k+".volume"),
-                this.config.getInt(k+".pitch"),
-                this.config.getInt(k+".sound-length")
+                this.getConfig().getString(k+".permission"),
+                this.getConfig().getString(k+".sound"),
+                this.getConfig().getString(k+".short-message"),
+                this.getConfig().getStringList(k+".long-message"),
+                this.getConfig().getInt(k+".volume"),
+                this.getConfig().getInt(k+".pitch"),
+                this.getConfig().getInt(k+".sound-length")
         )).collect(Collectors.toSet());
 
         EmergencyAlertSystem.getPlugin().getLogger().info("Loaded: " +
                         easTypeSet.parallelStream().map(EASType::getName).toList()
                 );
 
-        this.easTypeSet = easTypeSet;
+        this.setEasTypeSet(easTypeSet);
 
     }
 
     public Collection<EASType> getAllEASTypesFromCache() {
-        return this.easTypeSet;
+        return this.getEasTypeSet();
     }
 
+    public YamlConfiguration getConfig() {
+        return config;
+    }
+
+    public void setConfig(YamlConfiguration config) {
+        this.config = config;
+    }
+
+    public Collection<EASType> getEasTypeSet() {
+        return easTypeSet;
+    }
+
+    public void setEasTypeSet(Collection<EASType> easTypeSet) {
+        this.easTypeSet = easTypeSet;
+    }
 }

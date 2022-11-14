@@ -3,16 +3,16 @@ package com.colonelkai.emergencyalertsystem.eastype;
 import java.util.List;
 
 public class EASType {
-    String name;
-    String permission;
-    String sound;
-    String shortMessage;
+    private String name;
+    private String permission;
+    private String sound;
+    private String shortMessage;
 
-    List<String> longMessages;
+    private List<String> longMessages;
 
-    int volume;
-    int pitch;
-    int soundLength;
+    private int volume;
+    private int pitch;
+    private int soundLength;
 
     public EASType(
             String name,
@@ -24,14 +24,14 @@ public class EASType {
             int pitch,
             int soundLength
     ) {
-        this.name = name;
-        this.permission = permission;
-        this.sound = sound;
-        this.shortMessage = shortMessage;
-        this.longMessages = longMessages;
-        this.volume = volume;
-        this.pitch = pitch;
-        this.soundLength = soundLength;
+        this.setName(name);
+        this.setPermission(permission);
+        this.setSound(sound);
+        this.setShortMessage(shortMessage);
+        this.setLongMessages(longMessages);
+        this.setVolume(volume);
+        this.setPitch(pitch);
+        this.setSoundLength(soundLength);
     }
 
     public String getName() {
@@ -64,5 +64,37 @@ public class EASType {
 
     public int getSoundLength() {
         return soundLength;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
+    }
+
+    public void setShortMessage(String shortMessage) {
+        this.shortMessage = shortMessage;
+    }
+
+    public void setLongMessages(List<String> longMessages) {
+        this.longMessages = longMessages;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public void setPitch(int pitch) {
+        this.pitch = pitch;
+    }
+
+    public void setSoundLength(int soundLength) {
+        this.soundLength = soundLength;
     }
 }

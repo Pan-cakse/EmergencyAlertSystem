@@ -80,18 +80,12 @@ public class IssueCommand implements ArgumentCommand {
                 .forEach(p -> p.playSound(p.getLocation(), easType.getSound(), easType.getVolume(), easType.getPitch()));
 
         // HOT-BAR MESSAGE
-        int task2 = EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncRepeatingTask(EmergencyAlertSystem.getPlugin(),
-                () ->
-                            EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
-                            .parallelStream()
-                            .forEach(p -> p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(broadcastMessageShort))),
 
-                0, 20);
+        EmergencyAlertSystem.getPlugin().getServer().getOnlinePlayers()
+        .parallelStream()
+        .forEach(p -> p.sendTitle(" ", broadcastMessageShort, 10, (easType.getSoundLength() * 20) ,20));
 
-        EmergencyAlertSystem.getPlugin().getServer().getScheduler().scheduleSyncDelayedTask(
-                EmergencyAlertSystem.getPlugin(),
-                () -> EmergencyAlertSystem.getPlugin().getServer().getScheduler().cancelTask(task2),
-                (easType.getSoundLength()* 20L));
+
 
         return true;
     }

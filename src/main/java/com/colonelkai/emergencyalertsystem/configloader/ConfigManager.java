@@ -2,6 +2,7 @@ package com.colonelkai.emergencyalertsystem.configloader;
 
 import com.colonelkai.emergencyalertsystem.EmergencyAlertSystem;
 import com.colonelkai.emergencyalertsystem.eastype.EASType;
+import org.bukkit.Server;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -10,6 +11,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class ConfigManager {
@@ -74,6 +76,10 @@ public class ConfigManager {
                 this.getConfig().getInt(k+".sound-length")
         )).collect(Collectors.toSet()));
 
+        this.easTypeSet = this.easTypeSet.parallelStream()
+                .filter(this::checkEasType)
+                .collect(Collectors.toSet());
+
         EmergencyAlertSystem.getPlugin().getLogger().info("Loaded: " +
                   this.getEasTypeSet().parallelStream().map(EASType::getName).toList()
         );
@@ -90,5 +96,48 @@ public class ConfigManager {
 
     public Collection<EASType> getEasTypeSet() {
         return easTypeSet;
+    }
+
+    private boolean checkEasType(EASType type) {
+        // there are millions of better ways to do this, but at this moment I'm so tired, I just want to publish the plugin.
+        // mose please don't kill me
+        Logger logger = EmergencyAlertSystem.getPlugin().getLogger();
+        boolean correct = true;
+        String startString = "Error in loading EASType " + type.getName() + ": ";
+
+        if((null == type.getName()) || type.getName().isEmpty()) {
+            logger.warning(startString + "Empty Name");
+            correct = false;
+        }
+        if((null == type.getPermission()) || type.getName().isEmpty()) {
+            logger.warning(startString + "Empty Permission");
+            correct = false;
+        }
+        if((null == type.getSound()) || type.getName().isEmpty()) {
+            logger.warning(startString + "Empty sound");
+            correct = false;
+        }
+        if((null == type.getShortMessage()) || type.getName().isEmpty()) {
+            logger.warning(startString + "Empty short message");
+            correct = false;
+        }
+        if((null == type.getLongMessages()) || type.getName().isEmpty()) {
+            logger.warning(startString + "Empty long messages list");
+            correct = false;
+        }
+        if(0 >= type.getVolume()) {
+            logger.warning(startString + "Volume cannot be lower than 0");
+            correct = false;
+        }
+        if( (0 > type.getPitch()) || (2 < type.getPitch()) ) {
+            logger.warning(startString + "Pitch must be between 0 and 2");
+            correct = false;
+        }
+        if(0 >= type.getSoundLength()) {
+            logger.warning(startString + "Sound length cannot be lower than 0");
+            correct = false;
+        }
+
+        return correct;
     }
 }

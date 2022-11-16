@@ -1,5 +1,6 @@
 package com.colonelkai.emergencyalertsystem.eastype;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class EASType {
                    String permission,
                    String sound,
                    String shortMessage,
-                   List<String> longMessages,
+                   Collection<String> longMessages,
                    int volume,
                    int pitch,
                    int soundLength) {

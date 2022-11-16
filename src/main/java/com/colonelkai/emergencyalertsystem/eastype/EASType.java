@@ -1,5 +1,6 @@
 package com.colonelkai.emergencyalertsystem.eastype;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class EASType {
@@ -8,7 +9,7 @@ public class EASType {
     private final String sound;
     private final String shortMessage;
 
-    private final List<String> longMessages;
+    private final List<String> longMessages = new LinkedList<>();
 
     private final int volume;
     private final int pitch;
@@ -26,7 +27,7 @@ public class EASType {
         this.permission = permission;
         this.sound = sound;
         this.shortMessage = shortMessage;
-        this.longMessages = longMessages;
+        this.longMessages.addAll(longMessages);
         this.volume = volume;
         this.pitch = pitch;
         this.soundLength = soundLength;

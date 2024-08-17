@@ -1,4 +1,4 @@
-package com.colonelkai.emergencyalertsystem.eastype;
+package me.pancakse.emergencyalertsystem.eastype;
 
 import java.util.Collection;
 import java.util.LinkedList;

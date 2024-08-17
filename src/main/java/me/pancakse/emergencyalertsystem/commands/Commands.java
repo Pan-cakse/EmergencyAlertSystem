@@ -1,4 +1,4 @@
-package com.colonelkai.emergencyalertsystem.commands;
+package me.pancakse.emergencyalertsystem.commands;
 
 import org.mose.command.BukkitCommandWrapper;
 

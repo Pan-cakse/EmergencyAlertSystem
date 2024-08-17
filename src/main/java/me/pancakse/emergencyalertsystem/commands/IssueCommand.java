@@ -1,7 +1,7 @@
-package com.colonelkai.emergencyalertsystem.commands;
+package me.pancakse.emergencyalertsystem.commands;
 
-import com.colonelkai.emergencyalertsystem.EmergencyAlertSystem;
-import com.colonelkai.emergencyalertsystem.eastype.EASType;
+import me.pancakse.emergencyalertsystem.EmergencyAlertSystem;
+import me.pancakse.emergencyalertsystem.eastype.EASType;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;

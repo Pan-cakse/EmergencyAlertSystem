@@ -1,7 +1,7 @@
-package com.colonelkai.emergencyalertsystem;
+package me.pancakse.emergencyalertsystem;
 
-import com.colonelkai.emergencyalertsystem.commands.Commands;
-import com.colonelkai.emergencyalertsystem.configloader.ConfigManager;
+import me.pancakse.emergencyalertsystem.commands.Commands;
+import me.pancakse.emergencyalertsystem.configloader.ConfigManager;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 

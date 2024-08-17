@@ -1,7 +1,7 @@
-package com.colonelkai.emergencyalertsystem.configloader;
+package me.pancakse.emergencyalertsystem.configloader;
 
-import com.colonelkai.emergencyalertsystem.EmergencyAlertSystem;
-import com.colonelkai.emergencyalertsystem.eastype.EASType;
+import me.pancakse.emergencyalertsystem.EmergencyAlertSystem;
+import me.pancakse.emergencyalertsystem.eastype.EASType;
 import org.bukkit.Server;
 import org.bukkit.configuration.file.YamlConfiguration;
 

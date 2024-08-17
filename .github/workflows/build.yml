@@ -32,11 +32,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          path: "**/build/libs"
-
       - name: Upload Artifacts
         if: env.debug == 'true' || github.ref_name != env.branch
         uses: actions/upload-artifact@main

@@ -63,11 +63,6 @@ jobs:
         run: ./gradlew test
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          
-      - name: Create Coverage
-        run: ./gradlew jacocoTestReport
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Upload CodeCov Report
         uses: codecov/codecov-action@v3

@@ -52,7 +52,7 @@ apply plugin: 'java'
 
 group = 'me.pancakse'
 version = '1.0'
-description = 'emergency-alert-system'
+description = 'emergency-alert-system-remastered'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 publishing {

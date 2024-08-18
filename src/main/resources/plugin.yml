@@ -1,6 +1,6 @@
 name: EmergencyAlertSystem
 version: '${project.version}'
-main: me.pancakse.emergencyalertsystem.EmergencyAlertSystem
+main: me.pancakse.emergencyalertsystemremastered.EmergencyAlertSystem
 api-version: '1.20'
 authors: [ Pancakse ]
 description: A plugin to provide Emergency Alert Systems.

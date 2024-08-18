@@ -51,7 +51,7 @@ apply plugin: 'com.gradleup.shadow'
 apply plugin: 'java'
 
 group = 'me.pancakse'
-version = '1.0'
+version = '1.0.1'
 description = 'emergency-alert-system-remastered'
 java.sourceCompatibility = JavaVersion.VERSION_17
 

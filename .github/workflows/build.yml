@@ -36,8 +36,6 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           version: mc1.20.1-0.0.2
-          modrinth-id: mdwSFOvM
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           github-token: ${{ secrets.TOKEN }}
           loaders: |
             paper

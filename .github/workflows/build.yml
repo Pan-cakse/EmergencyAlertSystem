@@ -39,3 +39,6 @@ jobs:
           modrinth-id: 1KngRsrp
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           github-token: ${{ secrets.TOKEN }}
+          loaders: |
+            paper
+            purpur

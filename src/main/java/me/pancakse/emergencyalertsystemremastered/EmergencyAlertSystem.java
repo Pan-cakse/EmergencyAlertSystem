@@ -1,7 +1,7 @@
-package me.pancakse.emergencyalertsystem;
+package me.pancakse.emergencyalertsystemremastered;
 
-import me.pancakse.emergencyalertsystem.commands.Commands;
-import me.pancakse.emergencyalertsystem.configloader.ConfigManager;
+import me.pancakse.emergencyalertsystemremastered.commands.Commands;
+import me.pancakse.emergencyalertsystemremastered.configloader.ConfigManager;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 

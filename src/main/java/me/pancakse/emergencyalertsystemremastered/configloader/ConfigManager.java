@@ -1,7 +1,7 @@
-package me.pancakse.emergencyalertsystem.configloader;
+package me.pancakse.emergencyalertsystemremastered.configloader;
 
-import me.pancakse.emergencyalertsystem.EmergencyAlertSystem;
-import me.pancakse.emergencyalertsystem.eastype.EASType;
+import me.pancakse.emergencyalertsystemremastered.EmergencyAlertSystem;
+import me.pancakse.emergencyalertsystemremastered.eastype.EASType;
 import org.bukkit.Server;
 import org.bukkit.configuration.file.YamlConfiguration;
 

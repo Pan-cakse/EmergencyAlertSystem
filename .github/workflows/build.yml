@@ -35,7 +35,7 @@ jobs:
       - name: Upload Jar
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          version: mc1.20.1-0.0.3
+          version: mc1.20.1-0.0.4
           github-token: ${{ secrets.TOKEN }}
           loaders: |
             paper

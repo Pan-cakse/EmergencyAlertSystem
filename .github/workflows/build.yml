@@ -31,9 +31,9 @@ jobs:
         run: ./gradlew build
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          
+
       - name: Upload Jar
-      - uses: Kir-Antipov/mc-publish@v3.3
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: 1KngRsrp
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
